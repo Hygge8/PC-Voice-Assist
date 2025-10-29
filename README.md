@@ -1,5 +1,9 @@
 # PC Voice Assist
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
+[![OpenAI](https://img.shields.io/badge/OpenAI-API-412991.svg)](https://openai.com/)
+
 **PC Voice Assist** 是一个基于大语言模型的智能语音控制应用,允许用户通过自然语言语音对话来控制电脑执行各种任务。
 
 ## ✨ 特性
@@ -11,6 +15,21 @@
 - 🚀 **应用控制**: 打开各种应用程序(浏览器、记事本等)
 - 🔧 **系统控制**: 音量调节、截图等系统级操作
 - 🧠 **智能编排**: 利用大模型的推理能力,自动组合多个基础能力完成复杂任务
+
+## 🎬 演示
+
+```bash
+# 简单任务
+用户: "播放音乐 ~/Music/song.mp3"
+助手: "正在播放: song.mp3"
+
+用户: "帮我写一篇关于人工智能的文章"
+助手: "好的,我来为您生成一篇关于人工智能的文章..."
+
+# 复杂任务编排
+用户: "帮我写一篇关于环保的短文,保存到桌面,然后打开记事本"
+助手: "好的,我会先生成文章,然后保存到桌面,最后打开记事本..."
+```
 
 ## 🏗️ 架构
 
@@ -32,10 +51,10 @@
 
 ## 📋 系统要求
 
-- Python 3.11+
-- Linux / macOS / Windows
+- Python 3.11 或更高版本
 - 麦克风和扬声器
 - OpenAI API Key
+- Linux / macOS / Windows
 
 ## 🚀 快速开始
 
@@ -52,24 +71,22 @@ cd PC-Voice-Assist
 pip install -r requirements.txt
 ```
 
-**注意**: 
-- 在Linux上,可能需要安装额外的系统依赖:
-  ```bash
-  sudo apt-get install portaudio19-dev python3-pyaudio
-  sudo apt-get install espeak  # 用于语音合成
-  ```
+**Linux 系统额外依赖**:
+```bash
+# Ubuntu/Debian
+sudo apt-get install portaudio19-dev python3-dev espeak
+
+# Fedora
+sudo dnf install portaudio-devel python3-devel espeak
+```
 
 ### 3. 配置环境变量
 
-创建 `.env` 文件并设置OpenAI API Key:
-
 ```bash
-export OPENAI_API_KEY="your-api-key-here"
-```
+# 复制环境变量示例文件
+cp .env.example .env
 
-或者直接在终端中设置:
-
-```bash
+# 编辑 .env 文件,设置你的 API Key
 export OPENAI_API_KEY="your-api-key-here"
 ```
 
@@ -79,65 +96,120 @@ export OPENAI_API_KEY="your-api-key-here"
 python main.py
 ```
 
+### 5. 快速测试
+
+```bash
+# 快速测试基本功能
+python examples/quick_start.py
+
+# 无语音演示(适用于没有麦克风的环境)
+python examples/demo_without_voice.py
+
+# 高级功能演示
+python examples/advanced_demo.py
+
+# 运行测试
+python tests/test_basic.py
+```
+
 ## 💡 使用示例
 
 ### 基础操作
 
-**播放音乐**:
-- "播放音乐 /home/user/Music/song.mp3"
-- "暂停音乐"
-- "继续播放"
-- "停止播放"
+**音乐控制**:
+```
+"播放音乐 /home/user/Music/song.mp3"
+"暂停音乐"
+"继续播放"
+"停止播放"
+"搜索音乐 轻音乐"
+```
 
-**写文章**:
-- "帮我写一篇关于人工智能的文章"
-- "写一篇短文,主题是环保"
-- "写一篇长文章关于量子计算,保存到桌面"
+**AI 写作**:
+```
+"帮我写一篇关于人工智能的文章"
+"写一篇短文,主题是环保"
+"写一篇长文章关于量子计算,保存到桌面"
+```
 
 **文件操作**:
-- "创建一个文件,路径是 /home/user/Desktop/test.txt,内容是 Hello World"
-- "读取文件 /home/user/Desktop/test.txt"
-- "删除文件 /home/user/Desktop/test.txt"
+```
+"创建一个文件,路径是 ~/Desktop/test.txt,内容是 Hello World"
+"读取文件 ~/Desktop/test.txt"
+"删除文件 ~/Desktop/test.txt"
+```
 
-**打开应用**:
-- "打开浏览器"
-- "打开记事本"
-- "打开文件管理器"
+**应用控制**:
+```
+"打开浏览器"
+"打开记事本"
+"打开文件管理器"
+"打开终端"
+```
 
 **系统控制**:
-- "增加音量"
-- "降低音量"
-- "截图"
+```
+"增加音量"
+"降低音量"
+"把音量设置为50"
+"截图"
+```
 
 ### 复杂场景
 
-**组合任务**:
-- "帮我写一篇关于人工智能的文章,然后保存到桌面,保存完后播放一首轻音乐"
-- "搜索音乐文件中包含'轻音乐'的歌曲,然后播放第一首"
+**多步骤任务**:
+```
+"帮我写一篇关于人工智能的文章,保存到桌面,然后播放一首轻音乐"
+"搜索音乐目录中的古典音乐,播放第一首,然后把音量设置为30"
+"在桌面创建一个笔记文件,内容是今天的待办事项,然后打开记事本"
+```
+
+### 控制命令
+
+```
+"退出" / "再见" / "结束" - 退出程序
+"重置对话" / "清空历史" - 清空对话历史
+```
 
 ## 📁 项目结构
 
 ```
 pc-voice-assist/
-├── README.md                    # 项目说明
-├── requirements.txt             # 依赖列表
-├── config.py                    # 配置文件
-├── main.py                      # 主入口
-├── src/
+├── README.md                           # 项目说明
+├── LICENSE                             # MIT 许可证
+├── CONTRIBUTING.md                     # 贡献指南
+├── CHANGELOG.md                        # 更新日志
+├── requirements.txt                    # 依赖列表
+├── config.py                           # 配置文件
+├── main.py                             # 主程序入口
+├── .env.example                        # 环境变量示例
+├── .gitignore                          # Git 忽略文件
+├── .github/                            # GitHub 配置
+│   ├── ISSUE_TEMPLATE/                 # Issue 模板
+│   └── PULL_REQUEST_TEMPLATE.md        # PR 模板
+├── docs/                               # 文档
+│   ├── architecture.md                 # 架构文档
+│   ├── user_guide.md                   # 用户指南
+│   └── development.md                  # 开发文档
+├── src/                                # 源代码
 │   ├── __init__.py
-│   ├── speech_recognition_module.py  # 语音识别
-│   ├── text_to_speech.py            # 语音合成
-│   ├── llm_client.py                 # 大模型客户端
-│   ├── task_executor.py              # 任务执行引擎
-│   └── controllers/                  # 控制器模块
+│   ├── speech_recognition_module.py    # 语音识别
+│   ├── text_to_speech.py               # 语音合成
+│   ├── llm_client.py                   # 大模型客户端
+│   ├── task_executor.py                # 任务执行引擎
+│   └── controllers/                    # 控制器模块
 │       ├── __init__.py
-│       ├── music_controller.py       # 音乐控制
-│       ├── writing_controller.py     # 写作控制
-│       ├── file_controller.py        # 文件操作
-│       ├── app_controller.py         # 应用控制
-│       └── system_controller.py      # 系统控制
-├── tests/                       # 测试文件
-└── examples/                    # 示例文件
+│       ├── music_controller.py         # 音乐控制
+│       ├── writing_controller.py       # 写作控制
+│       ├── file_controller.py          # 文件操作
+│       ├── app_controller.py           # 应用控制
+│       └── system_controller.py        # 系统控制
+├── tests/                              # 测试
+│   └── test_basic.py                   # 基础测试
+└── examples/                           # 示例
+    ├── quick_start.py                  # 快速开始
+    ├── demo_without_voice.py           # 无语音演示
+    └── advanced_demo.py                # 高级功能演示
 ```
 
 ## ⚙️ 配置说明
@@ -165,28 +237,48 @@ pc-voice-assist/
 - **pygame**: 音乐播放
 - **psutil**: 系统进程管理
 
-## 📝 开发计划
+## 📖 文档
 
-- [ ] 支持更多的系统操作
-- [ ] 添加语音唤醒功能
-- [ ] 支持自定义插件
-- [ ] 添加Web界面
-- [ ] 支持多语言
-- [ ] 添加更多的AI能力
+- [用户指南](docs/user_guide.md) - 详细的使用说明
+- [开发文档](docs/development.md) - 开发和扩展指南
+- [架构文档](docs/architecture.md) - 系统架构设计
+- [贡献指南](CONTRIBUTING.md) - 如何参与贡献
+- [更新日志](CHANGELOG.md) - 版本更新记录
 
 ## 🤝 贡献
 
 欢迎提交 Issue 和 Pull Request!
 
+在贡献之前,请阅读 [贡献指南](CONTRIBUTING.md)。
+
+## 📝 开发计划
+
+- [ ] 支持更多的系统操作
+- [ ] 添加语音唤醒功能
+- [ ] 支持自定义插件
+- [ ] 添加 Web 管理界面
+- [ ] 支持多语言
+- [ ] 添加更多的 AI 能力
+- [ ] 支持云端同步
+
 ## 📄 许可证
 
-MIT License
+本项目采用 [MIT License](LICENSE) 开源协议。
 
 ## 👥 作者
 
-Hygge8
+**Hygge8** - [GitHub](https://github.com/Hygge8)
 
 ## 🙏 致谢
 
 感谢 OpenAI 提供的强大的大语言模型服务。
+
+## 📮 联系方式
+
+- GitHub Issues: [提交问题](https://github.com/Hygge8/PC-Voice-Assist/issues)
+- GitHub Discussions: [参与讨论](https://github.com/Hygge8/PC-Voice-Assist/discussions)
+
+---
+
+如果这个项目对你有帮助,请给个 ⭐️ Star 支持一下!
 
