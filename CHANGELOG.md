@@ -8,6 +8,15 @@
 ## [Unreleased]
 
 ### 新增
+- 添加 GitHub Actions CI/CD 配置
+  - 主 CI 工作流(测试、代码质量、安全扫描)
+  - CodeQL 安全分析工作流
+  - 依赖审查工作流
+  - 发布工作流
+  - 文档检查工作流
+- 添加 pyproject.toml 配置文件
+- 添加代码质量工具配置(.flake8, .codecov.yml)
+- 添加 CI/CD 文档
 - 添加贡献指南 (CONTRIBUTING.md)
 - 添加 GitHub Issue 模板(Bug 报告和功能请求)
 - 添加 Pull Request 模板
@@ -18,9 +27,10 @@
 - 添加环境配置示例文件
 
 ### 改进
-- 完善 README 文档
+- 完善 README 文档，添加 CI 徽章
 - 优化代码注释和文档字符串
 - 改进错误处理和提示信息
+- 更新 .gitignore 添加 CI 相关忽略项
 
 ## [1.0.0] - 2025-10-29
 

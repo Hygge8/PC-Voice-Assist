@@ -3,6 +3,8 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Python 3.11+](https://img.shields.io/badge/python-3.11+-blue.svg)](https://www.python.org/downloads/)
 [![OpenAI](https://img.shields.io/badge/OpenAI-API-412991.svg)](https://openai.com/)
+![CI](https://github.com/Hygge8/PC-Voice-Assist/workflows/CI/badge.svg)
+[![CodeQL](https://github.com/Hygge8/PC-Voice-Assist/workflows/CodeQL%20Analysis/badge.svg)](https://github.com/Hygge8/PC-Voice-Assist/actions/workflows/codeql.yml)
 
 **PC Voice Assist** 是一个基于大语言模型的智能语音控制应用,允许用户通过自然语言语音对话来控制电脑执行各种任务。
 
@@ -242,6 +244,7 @@ pc-voice-assist/
 - [用户指南](docs/user_guide.md) - 详细的使用说明
 - [开发文档](docs/development.md) - 开发和扩展指南
 - [架构文档](docs/architecture.md) - 系统架构设计
+- [CI/CD 文档](docs/ci-cd.md) - 持续集成和部署说明
 - [贡献指南](CONTRIBUTING.md) - 如何参与贡献
 - [更新日志](CHANGELOG.md) - 版本更新记录
 

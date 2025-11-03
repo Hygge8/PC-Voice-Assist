@@ -1,0 +1,23 @@
+coverage:
+  status:
+    project:
+      default:
+        target: auto
+        threshold: 5%
+        base: auto
+    patch:
+      default:
+        target: auto
+        threshold: 5%
+
+comment:
+  layout: "reach,diff,flags,tree"
+  behavior: default
+  require_changes: false
+
+ignore:
+  - "tests/"
+  - "examples/"
+  - "docs/"
+  - "**/__pycache__/"
+

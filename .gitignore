@@ -24,6 +24,7 @@ wheels/
 venv/
 ENV/
 env/
+.venv
 
 # IDE
 .vscode/
@@ -46,7 +47,15 @@ Thumbs.db
 # Test
 .pytest_cache/
 .coverage
+.coverage.*
 htmlcov/
+coverage.xml
+*.cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmyp.json
 
 # Generated files
 *.wav
