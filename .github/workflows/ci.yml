@@ -54,7 +54,13 @@ jobs:
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
       run: |
-        pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
+        # 检查是否提供了 API Key,如果没有则跳过依赖 API 的测试
+        if [ -z "${{ secrets.OPENAI_API_KEY }}" ]; then
+          echo "::warning::OPENAI_API_KEY secret is not set. Skipping tests that require API access."
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term --ignore=tests/test_llm_client.py
+        else
+          pytest tests/ -v --cov=src --cov-report=xml --cov-report=term
+        fi
 
     - name: Upload coverage to Codecov
       if: matrix.os == 'ubuntu-latest' && matrix.python-version == '3.11'

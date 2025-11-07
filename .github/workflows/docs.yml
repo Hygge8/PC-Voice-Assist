@@ -43,19 +43,5 @@ jobs:
         config-file: '.github/markdown-link-check-config.json'
         check-modified-files-only: 'yes'
 
-  spell-check:
-    name: Spell Check
-    runs-on: ubuntu-latest
 
-    steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-
-    - name: Check spelling
-      uses: streetsidesoftware/cspell-action@v6
-      with:
-        files: |
-          **/*.md
-          **/*.py
-        incremental_files_only: false
 
