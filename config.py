@@ -1,6 +1,7 @@
 """
 配置文件
 """
+
 import os
 from pathlib import Path
 
@@ -36,17 +37,17 @@ SAFE_DIRECTORIES = [
     str(Path.home() / "Music"),
 ]
 
+# 日志配置
+LOG_LEVEL = os.getenv("LOG_LEVEL", "INFO")
+LOG_FILE = "pc_voice_assist.log"
+
 # 音乐文件配置
 MUSIC_EXTENSIONS = [".mp3", ".wav", ".ogg", ".flac", ".m4a"]
 DEFAULT_MUSIC_DIR = str(Path.home() / "Music")
 
 # 写作配置
 DEFAULT_ARTICLE_DIR = str(Path.home() / "Documents")
-ARTICLE_LENGTHS = {
-    "short": "300-500字",
-    "medium": "800-1200字",
-    "long": "2000-3000字"
-}
+ARTICLE_LENGTHS = {"short": "300-500字", "medium": "800-1200字", "long": "2000-3000字"}
 
 # 对话配置
 MAX_CONVERSATION_HISTORY = 10  # 保留的对话轮数
@@ -60,4 +61,3 @@ SYSTEM_PROMPT = """你是一个智能PC语音助手,可以帮助用户通过自�
 
 当用户提出复杂需求时,你可以组合多个功能来完成任务。
 请始终以友好、专业的方式与用户交流。"""
-
